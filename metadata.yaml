@@ -1,6 +1,5 @@
 homepage: "https://powerclick.io"
-documentation: "https://powerclick.io"
+documentation: "https://github.com/datasift-io/powerclick-cookie-observer#readme"
 versions:
-  # Add the SHA of the commit that published template.tpl here (newest first), e.g.
-  # - sha: 0123456789abcdef0123456789abcdef01234567
-  #   changeNotes: Initial release.
+  - sha: 8515924d7b50af70e48470254916258016ae4c56
+    changeNotes: Initial release.
