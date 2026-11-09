@@ -1,6 +1,8 @@
 homepage: "https://powerclick.io"
 documentation: "https://github.com/datasift-io/powerclick-cookie-observer#readme"
 versions:
+  - sha: 9c01e4b9bfb8762f64acd2188563aec134b1931e
+    changeNotes: Reports native cookies PowerClick restored (e.g. _fbp) separately from those the platform pixel set.
   - sha: 2ddbf55f598758b053b48e45e4232f64353ac459
     changeNotes: Adds the PowerClick icon.
   - sha: 8515924d7b50af70e48470254916258016ae4c56
