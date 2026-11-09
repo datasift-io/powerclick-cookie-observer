@@ -218,11 +218,20 @@ const NATIVE_OBSERVED = [
   'MUID', '_uetsid', '_uetvid', '_uetmsclkid'
 ];
 
+// Native cookies PowerClick created because the platform's own was missing (sjo-lp.js writes
+// __spore_restored, a comma list — today only _fbp). Reported as source 'minted' so /cookies can keep
+// native coverage = what the pixel achieved, and show what PowerClick restored on top.
+const READ_ONLY = ['__spore_restored'];
+const restoredRaw = getCookieValues('__spore_restored')[0] || '';
+const restoredList = restoredRaw ? restoredRaw.split(',') : [];
+
 const nativeObservations = [];
 for (let k = 0; k < NATIVE_OBSERVED.length; k++) {
   const cn = NATIVE_OBSERVED[k];
   const present = !!getCookieValues(cn)[0];
-  nativeObservations.push({ name: cn, present: present });
+  const obs = { name: cn, present: present };
+  if (present && restoredList.indexOf(cn) !== -1) obs.source = 'minted';
+  nativeObservations.push(obs);
 }
 
 // ─── Phase 4: Report observation to PowerClick ───────────────────────────────
@@ -525,6 +534,10 @@ ___SERVER_PERMISSIONS___
               {
                 "type": 1,
                 "string": "_uetmsclkid"
+              },
+              {
+                "type": 1,
+                "string": "__spore_restored"
               }
             ]
           }
